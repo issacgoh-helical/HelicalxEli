@@ -1,0 +1,54 @@
+experiment_details:
+    experiment_name: "pbmc_scGPT_GF_inference"
+    experiment_description: "An experiment constructed using data from ALS patients from the B4 motor cortex for the purposes of evaluating cellstate recovery for each model"
+
+scgpt:
+    # data: "/home/issac/data/Verge_ALS_v1/Pineda_etal/sALS_control.h5ad"
+    data: "../data/A1_V1_PBMC.h5ad"
+    # data from lakefs is accepted too:
+    # "s3://helical/main/adjusted_17_04_24_YolkSacRaw_F158_WE_annots"
+
+    model_name: "scgpt"
+    # path/to/ checkpoint
+    # "scgpt"
+    # "gf-6L-30M-i2048", "gf-12L-30M-i2048"
+    # "gf-12L-95M-i4096", "gf-20L-95M-i4096", "gf-12L-95M-i4096-CLcancer"
+    # "33l_8ep_1024t_1280", "4layer_model"
+    # "helix-mrna"
+    # "mamba2-mrna"
+    # "hyenadna-tiny-1k-seqlen", "hyenadna-tiny-1k-seqlen-d256"
+    #model_path: null # The path to a fine-tuned model saved as a .ckpt file. If not provided, the model is assumed to be saved as a member variable during the training step.
+    output_dir: "../outputs/inference_output"
+#    prediction_type: "get_embeddings" # "get_label_predictions"
+    # obs_key: Key in the obs attribute of the AnnData object to use to retrieve labels."
+    batch_size: 24 
+    emb_mode: "cell" # "cell", "gene"
+ #   species: "human" # "human", "mouse", "frog", "zebrafish", "mouse_lemur", "pig", "macaca_fascicularis", "macaca_mulatta"
+    device: "cuda"
+    # n_observations: 100
+    
+    
+gf-12L-95M-i4096: 
+    # data: "/home/issac/data/Verge_ALS_v1/Pineda_etal/sALS_control.h5ad"
+    data : "../data/A1_V1_PBMC.h5ad"
+    # data from lakefs is accepted too:
+    # "s3://helical/main/adjusted_17_04_24_YolkSacRaw_F158_WE_annots"
+
+    model_name: "gf-12L-95M-i4096-CLcancer"
+    # path/to/ checkpoint
+    # "scgpt"
+    # "gf-6L-30M-i2048", "gf-12L-30M-i2048"
+    # "gf-12L-95M-i4096", "gf-20L-95M-i4096", "gf-12L-95M-i4096-CLcancer"
+    # "33l_8ep_1024t_1280", "4layer_model"
+    # "helix-mrna"
+    # "mamba2-mrna"
+    # "hyenadna-tiny-1k-seqlen", "hyenadna-tiny-1k-seqlen-d256"
+    #model_path: null # The path to a fine-tuned model saved as a .ckpt file. If not provided, the model is assumed to be saved as a member variable during the training step.
+    output_dir: "../outputs/inference_output"
+#    prediction_type: "get_embeddings" # "get_label_predictions"
+    # obs_key: Key in the obs attribute of the AnnData object to use to retrieve labels."
+    batch_size: 24 
+    emb_mode: "cell" # "cell", "gene"
+#    species: "human" # "human", "mouse", "frog", "zebrafish", "mouse_lemur", "pig", "macaca_fascicularis", "macaca_mulatta"
+    device: "cuda"
+    # n_observations: 100
