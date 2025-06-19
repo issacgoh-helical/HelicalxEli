@@ -1,0 +1,3 @@
+# Exclude specific data file types
+*.csv
+*.h5ad
